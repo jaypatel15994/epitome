@@ -7,7 +7,6 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use App\User;
-
 class LoginController extends Controller
 {
     /*
@@ -28,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -50,9 +49,9 @@ class LoginController extends Controller
        foreach ( $user[0]->roles as $role) {
            if($role->type == 3 || $role->type == 2)
            {
-                return view('home')->with('role',"admin");
+                return view('home')->with('role','admin');
            }
        }
-       return view('home')->with('role',"User");
+       return view('home')->with('role','user');
     }
 }
