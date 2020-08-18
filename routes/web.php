@@ -13,10 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('/layouts/app');
+// });
+
+
+Route::get('/', 'ProductController@index');
+
+
+
+// Auth::routes();
+
+// Route::get('/home', 'HomeController@index')->name('home');
+Route::get('product/create', function () {
+    // $product = App\Product::first();
+    // dd($product);
+    return view('home');
 });
 
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/upload', 'ProductController@store');
