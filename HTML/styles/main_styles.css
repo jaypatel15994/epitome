@@ -156,6 +156,9 @@ img {
 
 .product_image{
 	height: 390.28px;
+	background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 .product_image img{
 	display: block;
