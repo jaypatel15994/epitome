@@ -93,6 +93,12 @@
 		width: 25px;
 		height: 25px;
 	}
+	.cart a > div > div {
+		width: 18px;
+		height: 18px;
+		font-size: 11px;
+		line-height: 18px;
+	}
 	.user a > div
 	{
 		width: 26px;

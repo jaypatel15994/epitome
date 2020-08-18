@@ -123,10 +123,10 @@ p a:hover::after
 	background: rgba(188,155,155,0.6);
 	color: #FFFFFF;
 }
-p::selection
+/* p::selection
 {
 	
-}
+} */
 h1{font-size: 48px;}
 h2{font-size: 36px;}
 h3{font-size: 24px;}
@@ -140,7 +140,7 @@ h1, h2, h3, h4, h5, h6
 	text-shadow: rgba(0,0,0,.01) 0 0 1px;
 	line-height: 1.2;
 }
-h1::selection, 
+/* h1::selection, 
 h2::selection, 
 h3::selection, 
 h4::selection, 
@@ -148,10 +148,23 @@ h5::selection,
 h6::selection
 {
 	
+} */
+
+img {
+    max-width: 100%;
 }
-img
-{
+
+.product_image{
+	height: 390.28px;
+}
+.product_image img{
+	display: block;
 	max-width: 100%;
+	max-height: 390.28px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 button:active
 {
@@ -540,6 +553,37 @@ section
 	max-width: 100%;
 	height: auto;
 }
+
+
+.cart {
+    margin-right: 29px;
+}
+
+.cart a>div {
+    width: 37px;
+    height: 37px;
+}
+
+.cart a>div>svg {
+    max-width: 100%;
+    height: auto;
+}
+
+.cart a>div>div {
+    position: absolute;
+    top: -12px;
+    right: -4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: #2fce98;
+    text-align: center;
+    line-height: 24px;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: 700;
+}
+
 .header_phone > div:first-child > div
 {
 	width: 36px;
@@ -784,6 +828,7 @@ section
 {
 	overflow: hidden;
 	border-radius: 3px;
+	height: 100%;
 }
 .product
 {
@@ -826,6 +871,7 @@ section
 	vertical-align: top;
 	margin-left: 2px;
 }
+
 .product_content
 {
 	border: solid 2px #dbdbdb;
@@ -1113,6 +1159,11 @@ section
 {
 	border-color: #2fce98;
 	color: #2fce98;
+}
+
+.home_item_side{
+	max-width: 100%;
+	max-height: 100%;
 }
 
 /*********************************
