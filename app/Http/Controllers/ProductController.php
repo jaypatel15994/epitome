@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use Carbon\Traits\Timestamp;
 use Illuminate\Http\Request;
+
+use function GuzzleHttp\Promise\all;
 
 class ProductController extends Controller
 {
@@ -12,10 +15,15 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $products=Product::paginate(6);
+
+        return view('index')->with('products',$products);
+        
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,12 +44,30 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $product=new Product;
+        if ($request->hasFile('image')) {
+            $filename = time().".".$request->image->getClientOriginalExtension();
+
+            $request->image->storeAs('uploads/products',$filename,'public');
+           
+            
+            $product->name=$request->name;
+            $product->image=$filename;
+            $product->price=$request->price;
+            $product->seller_id=1;
+            $product->description=$request->desc;
+
+        //   dd($product);
+            $product->save();
+            
+        }
+        return redirect('product/create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Product  $product
+    //  * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
