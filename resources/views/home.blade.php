@@ -14,7 +14,7 @@
        
         name : <input type="text" name="name" value="Cool Clothing with Brown Strips" />
         price : <input type="text" name="price" value="3.99" />
-        desc: <input type="text" name="desc" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book." />
+        desc: <input type="text" name="desc" value="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." />
         @csrf
         <input type="text" name="seller_id" value="1"/>
         <input type="file" name="image" />

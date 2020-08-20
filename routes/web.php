@@ -31,5 +31,10 @@ Route::get('product/create', function () {
     return view('home');
 });
 
+Route::get('/clothing', 'ProductController@clothing');
+Route::get('/electronics', 'ProductController@electronics');
+Route::get('/home&kitchen', 'ProductController@home_kitchen');
+Route::get('/beauty', 'ProductController@beauty');
+Route::get('/toys', 'ProductController@toys');
 
 Route::post('/upload', 'ProductController@store');
