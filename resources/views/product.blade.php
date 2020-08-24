@@ -33,9 +33,13 @@
 												<div
 													class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
 													<div>
-														<div><img src="{{asset('assets/images/cart.svg')}}" class="svg" alt="">
-															<div>+</div>
+														
+													<div>
+														<a href="{{ route('addItem', ['product_id' => $product->id ])}}">
+															<img src="{{asset('assets/images/cart.svg')}}" class="svg" alt="">
+															{{-- <div>+</div>--}}	</a> 
 														</div>
+													
 													</div>
 												</div>
 											</div>

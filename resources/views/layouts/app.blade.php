@@ -13,6 +13,8 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart_responsive.css')}}">
 </head>
 <body>
     
@@ -27,7 +29,7 @@
 		<div class="header_overlay"></div>
 		<div class="header_content d-flex flex-row align-items-center justify-content-start">
 			<div class="logo">
-				<a href="index.html">
+			<a href="{{url('/')}}">
 					<div class="d-flex flex-row align-items-center justify-content-start">
 						<div><img src="{{asset('assets/images/logo_1.png')}}" alt=""></div>
 						<div>Epitome</div>
@@ -55,7 +57,7 @@
 				<!-- User -->
 				<div class="user"><a href="signuplogin.html"><div><img src="{{asset('assets/images/user.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
 				<!-- Cart -->
-				<div class="cart"><a href="cart.html"><div><img class="svg" src="{{asset('assets/images/cart.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+				<div class="cart"><a href="{{url('cart')}}"><div><img class="svg" src="{{asset('assets/images/cart.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
 			</div>
 		</div>
 	</header>
