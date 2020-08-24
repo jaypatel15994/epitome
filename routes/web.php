@@ -19,10 +19,21 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', 'ProductController@index');
+Route::get('/cart','CartItemController@index');
+Route::get('/cartShow', function () {
+  // $product = App\Product::first();
+  // dd($product);
+  return view('cart');
+});
+
+// Route::get('/addItem', 'CartItemController@store');    
+
+Route::get('/addItem/{product_id}', [
+    'uses' => 'CartItemController@store',
+    'as'   => 'addItem'
+  ]);
 
 
-
-// Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('product/create', function () {

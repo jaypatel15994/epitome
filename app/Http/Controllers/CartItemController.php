@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CartItem;
+use App\Product;
 use Illuminate\Http\Request;
 
 class CartItemController extends Controller
@@ -14,7 +15,12 @@ class CartItemController extends Controller
      */
     public function index()
     {
-        //
+        // $cartItem= CartItem::all();
+
+        $cartItems = CartItem::with("product")->get();
+        // dd($cartItems[0]);
+       
+         return view('cart')->with('cartItems',$cartItems);
     }
 
     /**
@@ -33,9 +39,35 @@ class CartItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($product_id)
     {
         //
+
+
+        $cartItem=new CartItem;
+        // dd($product_id);
+       $item=CartItem::where('product_id',2)->get();
+        if($item == null){
+            $cartItem->product_id=$product_id;
+            $cartItem->user_id=1;
+            $cartItem->quantity=1;
+        //   dd($product);
+            $cartItem->save();
+        }
+        else{
+            
+            $item[0]->quantity= $item[0]->quantity+1;
+            // dd($item[0]);
+            $item[0]->update();
+        }
+            // session()->flash('msg', 'Successfully Product added in Cart.');
+            return redirect()->back();
+       
+
+
+       
+
+
     }
 
     /**
