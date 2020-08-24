@@ -15,10 +15,11 @@
             <div class="col">
                 <div class="page_nav">
                     <ul class="d-flex flex-row align-items-start justify-content-center">
-                        <li class="active"><a href="category.html">Clothing</a></li>
-                        <li><a href="category.html">Electronics</a></li>
-                        <li><a href="category.html">Home and Kitchen</a></li>
-                        <li><a href="category.html">Beauty</a></li>
+                        <li class="{{Request::is('clothing*') ? 'active' : '' }}"><a href="clothing">Clothing</a></li>
+                        <li class="{{Request::is('electronics*') ? 'active' : '' }}" ><a href="electronics">Electronics</a></li>
+                        <li class="{{Request::is('home&kitchen*') ? 'active' : '' }}"><a href="home&kitchen">Home and Kitchen</a></li>
+                        <li class="{{Request::is('beauty*') ? 'active' : '' }}"><a href="beauty">Beauty</a></li>
+                        <li class="{{Request::is('toys*') ? 'active' : ''}}"><a href="toys">Toys</a></li>
                     </ul>
                 </div>
             </div>

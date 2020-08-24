@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Product;
 use Carbon\Traits\Timestamp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 use function GuzzleHttp\Promise\all;
 
@@ -21,6 +23,53 @@ class ProductController extends Controller
 
         return view('index')->with('products',$products);
         
+    }
+    public function clothing(Request $request)
+    {
+        $products = Product::whereHas('categories', function ($q) {
+            //conditions from role table
+            $q->Where('name', 'Clothing');
+
+        })->paginate(6);
+        return view('index')->with('products',$products);
+        
+    }
+    public function electronics(Request $request)
+    {
+        $products = Product::whereHas('categories', function ($q) {
+            //conditions from role table
+            $q->Where('name', 'Electronics');
+
+        })->paginate(6);
+        return view('index')->with('products',$products);
+        
+    }
+    public function home_kitchen(Request $request)
+    {
+        $products = Product::whereHas('categories', function ($q) {
+            //conditions from role table
+            $q->Where('name', 'Home&Kitchen');
+
+        })->paginate(6);
+        return view('index')->with('products',$products);
+    }
+    public function beauty(Request $request)
+    {
+        $products = Product::whereHas('categories', function ($q) {
+            //conditions from role table
+            $q->Where('name', 'Beauty');
+
+        })->paginate(6);
+        return view('index')->with('products',$products);
+    }
+    public function toys(Request $request)
+    {
+        $products = Product::whereHas('categories', function ($q) {
+            //conditions from role table
+            $q->Where('name', 'Toys');
+
+        })->paginate(6);
+        return view('index')->with('products',$products);
     }
 
 
