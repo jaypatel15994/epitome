@@ -57,6 +57,15 @@
 					</form>
 				</div>
 				<!-- User -->
+				<div class="user">
+				<a href="admin" style="font-weight: bolder ; font-size: 18px;">
+					@if(Auth::user())
+					{{session('role')}}
+					@else
+					Guest
+					@endif
+				</a>
+				</div>
 				@if(!Auth::user())
 				<div class="user"><a href="login"><div><img src="{{asset('assets/images/user.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
 				@else

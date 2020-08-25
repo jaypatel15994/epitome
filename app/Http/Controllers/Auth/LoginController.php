@@ -48,15 +48,24 @@ class LoginController extends Controller
 
 
        $user = User::where('email',$email)->get();
-    //    $user[0]->roles;
        foreach ( $user[0]->roles as $role) {
-           if($role->type == 3 || $role->type == 2)
+           if($role->type == 3)
            {
+               
+                session(['role'=>'Admin']);
+                return redirect('/');
+           }
+           elseif( $role->type == 2){
+            dd($role);
+                session(['role'=>'Seller']);
+                return redirect('/');
+           }
+           else{
+            dd($role);
+                session(['role'=>'User']);
                 return redirect('/');
            }
        }
-    //    dd("123");
-       return redirect('/');
     }
 
     public function logout(Request $request) {
