@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -49,9 +52,15 @@ class LoginController extends Controller
        foreach ( $user[0]->roles as $role) {
            if($role->type == 3 || $role->type == 2)
            {
-                return view('home')->with('role','admin');
+                return redirect('/');
            }
        }
-       return view('home')->with('role','user');
+    //    dd("123");
+       return redirect('/');
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
     }
 }

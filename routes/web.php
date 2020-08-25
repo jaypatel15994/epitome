@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::get('/addItem/{product_id}', [
     'as'   => 'addItem'
   ]);
 
-
+Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
 Route::get('product/create', function () {
@@ -41,6 +42,11 @@ Route::get('product/create', function () {
     // dd($product);
     return view('home');
 });
+// Route::get('/login', function () {
+//   // $product = App\Product::first();
+//   // dd($product);
+//   return view('login');
+// });
 
 Route::get('/clothing', 'ProductController@clothing');
 Route::get('/electronics', 'ProductController@electronics');
@@ -49,3 +55,4 @@ Route::get('/beauty', 'ProductController@beauty');
 Route::get('/toys', 'ProductController@toys');
 
 Route::post('/upload', 'ProductController@store');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
