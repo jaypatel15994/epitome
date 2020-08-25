@@ -46,7 +46,8 @@ class CartItemController extends Controller
 
         $cartItem=new CartItem;
         // dd($product_id);
-       $item=CartItem::where('product_id',2)->get();
+       $item=CartItem::where('product_id',$product_id)->first();
+
         if($item == null){
             $cartItem->product_id=$product_id;
             $cartItem->user_id=1;
@@ -56,9 +57,9 @@ class CartItemController extends Controller
         }
         else{
             
-            $item[0]->quantity= $item[0]->quantity+1;
+            $item->quantity= $item->quantity+1;
             // dd($item[0]);
-            $item[0]->update();
+            $item->update();
         }
             // session()->flash('msg', 'Successfully Product added in Cart.');
             return redirect()->back();

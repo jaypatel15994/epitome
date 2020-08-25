@@ -15,6 +15,7 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart_responsive.css')}}">
+
 </head>
 <body>
     
