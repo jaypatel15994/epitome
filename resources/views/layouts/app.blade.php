@@ -15,7 +15,12 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart_responsive.css')}}">
+<<<<<<< HEAD
 
+=======
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/login.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/sourcesanspro-font.css')}}">
+>>>>>>> 38d82f3abd956cd6737695403709c7a45e46f2e3
 </head>
 <body>
     
@@ -56,7 +61,20 @@
 					</form>
 				</div>
 				<!-- User -->
-				<div class="user"><a href="signuplogin.html"><div><img src="{{asset('assets/images/user.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+				<div class="user">
+				<a href="admin" style="font-weight: bolder ; font-size: 18px;">
+					@if(Auth::user())
+					{{session('role')}}
+					@else
+					Guest
+					@endif
+				</a>
+				</div>
+				@if(!Auth::user())
+				<div class="user"><a href="login"><div><img src="{{asset('assets/images/user.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
+				@else
+				<div class="user"><a href="logout"><i class="fa fa-3x fa-sign-out" style="color: gray"></i></a></div>
+				@endif
 				<!-- Cart -->
 				<div class="cart"><a href="{{url('cart')}}"><div><img class="svg" src="{{asset('assets/images/cart.svg')}}" alt="https://www.flaticon.com/authors/freepik"></div></a></div>
 			</div>
@@ -233,5 +251,6 @@
 		<script src="{{ asset('assets/plugins/progressbar/progressbar.min.js')}}"></script>
 		<script src="{{ asset('assets/plugins/parallax-js-master/parallax.min.js')}}"></script>
 		<script src="{{ asset('assets/js/custom.js')}}"></script>
+		<script src="{{ asset('assets/js/login.js')}}"></script>
 </body>
 </html>

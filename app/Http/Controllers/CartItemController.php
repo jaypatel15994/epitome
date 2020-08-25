@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\CartItem;
 use App\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartItemController extends Controller
 {
@@ -44,13 +45,17 @@ class CartItemController extends Controller
         //
 
 
+        if(Auth::user()){
+
         $cartItem=new CartItem;
         // dd($product_id);
        $item=CartItem::where('product_id',$product_id)->first();
+        // dd($item[0]);
 
+    
         if($item == null){
             $cartItem->product_id=$product_id;
-            $cartItem->user_id=1;
+            $cartItem->user_id=Auth::user()->id;
             $cartItem->quantity=1;
         //   dd($product);
             $cartItem->save();
@@ -64,7 +69,10 @@ class CartItemController extends Controller
             // session()->flash('msg', 'Successfully Product added in Cart.');
             return redirect()->back();
        
-
+    }
+    else{
+        return redirect('login');
+    }
 
        
 

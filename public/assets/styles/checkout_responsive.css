@@ -105,6 +105,12 @@
 		font-size: 11px;
 		line-height: 18px;
 	}
+	.cart a > div > div {
+		width: 18px;
+		height: 18px;
+		font-size: 11px;
+		line-height: 18px;
+	}
 	.header_search
 	{
 		margin-right: 39px;

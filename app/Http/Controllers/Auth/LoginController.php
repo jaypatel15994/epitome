@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -45,13 +48,28 @@ class LoginController extends Controller
 
 
        $user = User::where('email',$email)->get();
-    //    $user[0]->roles;
        foreach ( $user[0]->roles as $role) {
-           if($role->type == 3 || $role->type == 2)
+           if($role->type == 3)
            {
-                return view('home')->with('role','admin');
+               
+                session(['role'=>'Admin']);
+                return redirect('/');
+           }
+           elseif( $role->type == 2){
+            dd($role);
+                session(['role'=>'Seller']);
+                return redirect('/');
+           }
+           else{
+            dd($role);
+                session(['role'=>'User']);
+                return redirect('/');
            }
        }
-       return view('home')->with('role','user');
+    }
+
+    public function logout(Request $request) {
+        Auth::logout();
+        return redirect('/login');
     }
 }

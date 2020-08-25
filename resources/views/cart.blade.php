@@ -48,7 +48,7 @@
 									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
 										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
 											<div><div class="product_number">{{++$count}}</div></div>
-											<div><div class="product_image"><img src="{{asset('storage/uploads/products/'.$cartItem->product->image)}}" alt=""></div></div>
+											<div><div class="cart_image"><img src="{{asset('storage/uploads/products/'.$cartItem->product->image)}}" alt=""></div></div>
 											<div class="product_name_container">
 												<div class="product_name"><a href="product.html">{{$cartItem->product->name}}</a></div>
 												
