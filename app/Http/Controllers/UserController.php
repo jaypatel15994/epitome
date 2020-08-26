@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class UserController extends Controller
 {
@@ -43,9 +44,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+
+        // $products=Product::with("categories")->where('seller_id',Auth::user()->id)->get();
+        $users=User::with('roles')->get();
+        // dd($users);
+       
+         return view('admin/viewUser')->with('users',$users);
     }
 
     /**

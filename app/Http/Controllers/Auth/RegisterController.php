@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\UserRole;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,7 +56,8 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'mobile'=>['required','string','min:10','max:10']
+            'mobile'=>['required','string','min:10','max:10'],
+            'role'=>['required'],
         ]);
     }
 
@@ -71,15 +73,22 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'mobile' => "+919999999999"
+            'mobile' => $data['mobile'],
+            'role'=>$data['role'],
         ]);
     }
 
     public function register(Request $request)
     {
         $this->validator($request->all())->validate();
-
+        
         event(new Registered($user = $this->create($request->all())));
+        $userRole = new UserRole();
+
+        $userRole->user_id = $user->id;
+        $userRole->role_id = ($request->role == 'User')?1:2;
+
+        $userRole->save();
 
         return redirect($this->redirectPath())->with('message_register_success', 'You have registered successfully. Please verify your mail to login.');
     }

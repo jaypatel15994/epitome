@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Product;
+use App\ProductCategory;
 use Carbon\Traits\Timestamp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 use function GuzzleHttp\Promise\all;
@@ -19,9 +21,19 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products=Product::paginate(6);
 
-        return view('index')->with('products',$products);
+      
+        
+        if($request->path()=='viewProduct'){
+            $products=Product::all();
+            return view('admin/viewproduct')->with('products',$products);
+        }
+        else{
+            
+        $products=Product::paginate(6);
+            return view('index')->with('products',$products);
+        }
+        
         
     }
     public function clothing(Request $request)
@@ -92,25 +104,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
         $product=new Product;
         if ($request->hasFile('image')) {
+
             $filename = time().".".$request->image->getClientOriginalExtension();
 
             $request->image->storeAs('uploads/products',$filename,'public');
            
-            
             $product->name=$request->name;
             $product->image=$filename;
             $product->price=$request->price;
-            $product->seller_id=1;
+            $product->seller_id=Auth::user()->id;
             $product->description=$request->desc;
 
         //   dd($product);
             $product->save();
+
+            foreach ($request->category as $cat) {
+                $productCategory = new ProductCategory;
+                $productCategory->product_id = $product->id;
+                $productCategory->category_id = $cat;
+                $productCategory->save();
+            }
             
         }
-        return redirect('product/create');
+        return redirect('addProduct');
     }
 
     /**
@@ -121,7 +140,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+       $products=Product::with("categories")->where('seller_id',Auth::user()->id)->get();
+        // dd($products[0]->categories[0]);
+       
+         return view('admin/viewproduct')->with('products',$products);
     }
 
     /**

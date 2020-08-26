@@ -22,7 +22,7 @@
 														<div class="row">
 															<div class="col-sm-3 offset-lg-1">
 																<div class="home_item_side"><a href="product.html"><img
-																			src="{{asset('assets/images/home_1.jpg')}}"
+																			src="{{asset('storage/uploads/products/1597866292.jpg')}}"
 																			alt="Product Image"></a></div>
 															</div>
 															<div
@@ -39,7 +39,7 @@
 																			href="product.html"><img
 																				src="{{asset('assets/images/home_2.jpg')}}" alt=""></div>
 
-																	<div class="product_content">
+																	{{-- <div class="product_content">
 																		<div
 																			class="product_info d-flex flex-row align-items-start justify-content-start">
 																			<div>
@@ -84,7 +84,7 @@
 																				</div>
 																			</div>
 																		</div>
-																	</div>
+																	</div> --}}
 																</div>
 															</div>
 															<div class="col-sm-3">
@@ -130,7 +130,7 @@
 																	<div class="product_image"><a
 																			href="product.html"><img
 																				src="{{asset('assets/images/product_1.jpg')}}" alt=""></div>
-																	<div class="product_content">
+																	{{-- <div class="product_content">
 																		<div
 																			class="product_info d-flex flex-row align-items-start justify-content-start">
 																			<div>
@@ -175,7 +175,7 @@
 																				</div>
 																			</div>
 																		</div>
-																	</div>
+																	</div> --}}
 																</div>
 															</div>
 															<div class="col-sm-3">
@@ -221,7 +221,7 @@
 																	<div class="product_image"><a
 																			href="product.html"><img
 																				src="{{asset('assets/images/product_2.jpg')}}" alt=""></div>
-																	<div class="product_content">
+																	{{-- <div class="product_content">
 																		<div
 																			class="product_info d-flex flex-row align-items-start justify-content-start">
 																			<div>
@@ -266,7 +266,7 @@
 																				</div>
 																			</div>
 																		</div>
-																	</div>
+																	</div> --}}
 																</div>
 															</div>
 															<div class="col-sm-3">
@@ -312,7 +312,7 @@
 																	<div class="product_image"><a
 																			href="product.html"><img
 																				src="{{asset('assets/images/product_3.jpg')}}" alt=""></div>
-																	<div class="product_content">
+																	{{-- <div class="product_content">
 																		<div
 																			class="product_info d-flex flex-row align-items-start justify-content-start">
 																			<div>
@@ -357,7 +357,7 @@
 																				</div>
 																			</div>
 																		</div>
-																	</div>
+																	</div> --}}
 																</div>
 															</div>
 															<div class="col-sm-3">

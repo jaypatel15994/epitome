@@ -1,5 +1,8 @@
 @extends('layouts.app')
-
+@section('page_css')
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart.css')}}">
+<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart_responsive.css')}}">
+@endsection
 @section('content')
 
 
