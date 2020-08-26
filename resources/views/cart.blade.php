@@ -37,6 +37,7 @@
 									<li>Price</li>
 									<li>Quantity</li>
 									<li>Total</li>
+									<li>Action</li>
 								</ul>
 							</div>
 
@@ -45,9 +46,12 @@
 								<ul class="cart_items_list">
 
 									<!-- Cart Item -->
-									<?php $count=0; ?>
+									<?php $count=0; 
+										  $totalPrice=0;
+									?>
 									@foreach ($cartItems as $cartItem)
 										
+									<?php $totalPrice+=$cartItem->quantity * $cartItem->product->price; ?>
 									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
 										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
 											<div><div class="product_number">{{++$count}}</div></div>
@@ -67,8 +71,10 @@
 											
 										</div>
 									<div class="product_total product_text"><span>Total: </span>${{$cartItem->quantity * $cartItem->product->price}}</div>
+									<div class="product_total product_text"><span>Total: </span><a href="deleteCartItem/{{$cartItem->id}}" class=""> <i class="fa fa-trash"></i> </a></div>
+									
 									</li>
-
+									
 
 
 									@endforeach
@@ -80,14 +86,20 @@
 							<!-- Cart Buttons -->
 							<div class="cart_buttons d-flex flex-row align-items-start justify-content-start">
 								<div class="cart_buttons_inner ml-sm-auto d-flex flex-row align-items-start justify-content-start flex-wrap">
-									<div class="button button_clear trans_200"><a href="categories.html">clear cart</a></div>
-									<div class="button button_continue trans_200"><a href="index.html">continue shopping</a></div>
+									<div class="button button_clear trans_200"><a href="clearCart">clear cart</a></div>
+									<div class="button button_continue trans_200"><a href="/">continue shopping</a></div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+
+
 				<div class="row cart_extra_row">
+
+
+{{-- 					
 					<div class="col-lg-6">
 						<div class="cart_extra cart_extra_1">
 							<div class="cart_extra_content cart_extra_coupon">
@@ -130,7 +142,11 @@
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> --}}
+
+
+
+
 					<div class="col-lg-6 cart_extra_col">
 						<div class="cart_extra cart_extra_2">
 							<div class="cart_extra_content cart_extra_total">
@@ -138,7 +154,7 @@
 								<ul class="cart_extra_total_list">
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Subtotal</div>
-										<div class="cart_extra_total_value ml-auto">$29.90</div>
+										<div class="cart_extra_total_value ml-auto">{{$totalPrice}}</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Shipping</div>
@@ -146,7 +162,7 @@
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Total</div>
-										<div class="cart_extra_total_value ml-auto">$29.90</div>
+										<div class="cart_extra_total_value ml-auto">{{$totalPrice}}</div>
 									</li>
 								</ul>
 								<div class="checkout_button trans_200"><a href="checkout.html">proceed to checkout</a></div>
@@ -154,6 +170,9 @@
 						</div>
 					</div>
 				</div>
+
+
+				
 			</div>
 		</div>
 
