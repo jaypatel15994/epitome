@@ -47,7 +47,7 @@
                     <div class="profile clearfix">
                         <div class="profile_info">
                             <span>Welcome,</span>
-                        <h2> {{$user->name}}</h2>
+                        <h2> {{Auth::user()->name}}</h2>
                         </div>
                     </div>
                     <!-- /menu profile quick info -->
@@ -67,8 +67,15 @@
 
                                 <li><a><i class="fa fa-edit"></i> User <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="add_user.html">Add User</a></li>
-                                        <li><a href="view_user.html">View User</a></li>
+                                        {{-- <li><a href="add_user">Add User</a></li> --}}
+                                        <li><a href="viewUser">View User</a></li>
+                                    </ul>
+                                </li>
+
+                                <li><a><i class="fa fa-list-alt"></i> Catrgory <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li><a href="addCategory">Add Category</a></li>
+                                        <li><a href="viewUser">View Category</a></li>
                                     </ul>
                                 </li>
                         </div>
@@ -97,7 +104,7 @@
                             <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                                    {{$user->name}}
+                                    {{Auth::user()->name}}
                                 </a>
                                 <div class="dropdown-menu dropdown-usermenu pull-right"
                                     aria-labelledby="navbarDropdown">

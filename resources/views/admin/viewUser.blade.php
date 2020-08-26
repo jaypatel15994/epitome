@@ -19,27 +19,28 @@
                                     style="width:100%">
                                     <thead>
                                         <tr>
-                                            <th>Product Name</th>
-                                            <th>Discription</th>
-                                            <th>Price</th>
-                                            <th>Catagory</th>
+                                            <th>User Name</th>
+                                            <th>User E-mail</th>
+                                            <th>Mobile</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
                                             <th>Edit or Delete</th>
                                         </tr>
                                     </thead>
 
 
                                     <tbody>
-                                        @foreach ($products as $product)
+                                        @foreach ($users as $user)
                                             
                                         <tr>
-                                            <td>{{$product->name}}</td>
-                                            <td>{{$product->description}}</td>
-                                            <td>{{$product->price}}</td>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                            <td>{{$user->mobile}}</td>
                                             <td>
                                                 <?php $i=0; ?>
-                                                @foreach ($product->categories as $category)
-                                                    {{ $category->name }}
-                                                    @if($i != (count($product->categories)-1) )
+                                                @foreach ($user->roles as $role)
+                                                    {{ $role->name }}
+                                                    @if($i != (count($user->roles)-1) )
                                                         {{ ", "}}
                                                     @endif
 
@@ -47,8 +48,18 @@
                                                 @endforeach
                                             </td>
                                             <td>
+                                            @if($user->status==0)
+                                            {{'Inactive'}}
+                                            @elseif($user->status==1) 
+                                            {{'Active'}}
+                                            @else 
+                                            {{'Deleted'}}
+                                            @endif
+                                            </td>
+                                            
+                                            <td>
                                                 <div class="w3-padding">
-                                                    
+                                                   
                                                     <a href="#"> <i
                                                             class="glyphicon glyphicon-pencil"></i> </a>
                                                     <a href="#"> <i
@@ -66,12 +77,6 @@
                                 </table>
                             </div>
                         </div>
-                       
-                    </div>
-                    <div class="row justify-content-center">
-            
-                        {{ $products->links() }}
-                        
                     </div>
                 </div>
             </div>

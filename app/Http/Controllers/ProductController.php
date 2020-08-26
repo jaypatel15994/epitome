@@ -21,9 +21,16 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products=Product::paginate(6);
 
-        return view('index')->with('products',$products);
+      
+        $products=Product::paginate(6);
+        if($request->path()=='viewProduct'){
+            return view('admin/viewproduct')->with('products',$products);
+        }
+        else{
+            return view('index')->with('products',$products);
+        }
+        
         
     }
     public function clothing(Request $request)
@@ -130,7 +137,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+       $products=Product::with("categories")->where('seller_id',Auth::user()->id)->get();
+        // dd($products[0]->categories[0]);
+       
+         return view('admin/viewproduct')->with('products',$products);
     }
 
     /**

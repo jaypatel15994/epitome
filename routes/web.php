@@ -25,6 +25,10 @@ Route::get('addProduct', function () {
   return view('admin/addProduct')->with('user',Auth::user());
 });
 
+Route::get('viewProduct', 'ProductController@index');
+Route::get('viewUser', 'UserController@show');
+
+
 Route::post('/admin/storeProduct', 'ProductController@store');
 Route::get('/', 'ProductController@index');
 Route::get('/cart','CartItemController@index');
