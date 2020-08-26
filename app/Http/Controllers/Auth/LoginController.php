@@ -44,11 +44,8 @@ class LoginController extends Controller
 
     protected function authenticated(Request $request, $user)
     {
-       $email = $request->get('email');
-
-
-       $user = User::where('email',$email)->get();
-       foreach ( $user[0]->roles as $role) {
+       session(['user'=>$user->name]);
+       foreach ( $user->roles as $role) {
            if($role->type == 3)
            {
                
@@ -56,12 +53,10 @@ class LoginController extends Controller
                 return redirect('/');
            }
            elseif( $role->type == 2){
-            dd($role);
                 session(['role'=>'Seller']);
                 return redirect('/');
            }
            else{
-            dd($role);
                 session(['role'=>'User']);
                 return redirect('/');
            }

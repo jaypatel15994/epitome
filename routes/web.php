@@ -18,7 +18,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('/layouts/app');
 // });
 
+Route::get('/admin', function () {
+    return view('admin/admin')->with('user',Auth::user());
+});
+Route::get('addProduct', function () {
+  return view('admin/addProduct')->with('user',Auth::user());
+});
 
+Route::post('/admin/storeProduct', 'ProductController@store');
 Route::get('/', 'ProductController@index');
 Route::get('/cart','CartItemController@index');
 Route::get('/cartShow', function () {
