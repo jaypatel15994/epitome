@@ -29,6 +29,11 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/admin/build/css/custom.min.css')}}" rel="stylesheet">
+
+
+
+
+
 </head>
 
 <body class="nav-md">
@@ -37,7 +42,7 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Epitome |
+                        <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Epitome |
                                 Admin</span></a>
                     </div>
 
@@ -74,8 +79,8 @@
 
                                 <li><a><i class="fa fa-list-alt"></i> Catrgory <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="addCategory">Add Category</a></li>
-                                        <li><a href="viewUser">View Category</a></li>
+                                        <li><a href="addCategory">Manage Category</a></li>
+                                        
                                     </ul>
                                 </li>
                         </div>
@@ -250,6 +255,25 @@
 
     <!-- Custom Theme Scripts -->
     <script src="{{asset('assets/admin/build/js/custom.min.js')}}"></script>
+
+
+
+     <!-- Datatables -->
+     <script src="{{asset('assets/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-buttons/js/buttons.print.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/jszip/dist/jszip.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
+     <script src="{{asset('assets/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
 
 </body>
 

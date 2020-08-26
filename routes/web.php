@@ -14,31 +14,31 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('/layouts/app');
-// });
+
 
 Route::get('/admin', function () {
-    return view('admin/admin')->with('user',Auth::user());
+    return view('admin/admin');
 });
 Route::get('addProduct', function () {
-  return view('admin/addProduct')->with('user',Auth::user());
+  return view('admin/addProduct');
+});
+Route::get('addCategory', function () {
+  return view('admin/addCategory');
 });
 
 Route::get('viewProduct', 'ProductController@index');
 Route::get('viewUser', 'UserController@show');
-
-
+Route::get('addCategory', 'CategoryController@index');
 Route::post('/admin/storeProduct', 'ProductController@store');
+Route::post('/admin/storeCategory', 'CategoryController@store');
+
 Route::get('/', 'ProductController@index');
 Route::get('/cart','CartItemController@index');
 Route::get('/cartShow', function () {
-  // $product = App\Product::first();
-  // dd($product);
   return view('cart');
 });
 
-// Route::get('/addItem', 'CartItemController@store');    
+    
 
 Route::get('/addItem/{product_id}', [
     'uses' => 'CartItemController@store',
@@ -47,17 +47,13 @@ Route::get('/addItem/{product_id}', [
 
 Auth::routes();
 
-// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('product/create', function () {
-    // $product = App\Product::first();
-    // dd($product);
     return view('home');
 });
-// Route::get('/login', function () {
-//   // $product = App\Product::first();
-//   // dd($product);
-//   return view('login');
-// });
+
+
+
+
 
 Route::get('/clothing', 'ProductController@clothing');
 Route::get('/electronics', 'ProductController@electronics');

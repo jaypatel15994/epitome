@@ -23,11 +23,14 @@ class ProductController extends Controller
     {
 
       
-        $products=Product::paginate(6);
+        
         if($request->path()=='viewProduct'){
+            $products=Product::all();
             return view('admin/viewproduct')->with('products',$products);
         }
         else{
+            
+        $products=Product::paginate(6);
             return view('index')->with('products',$products);
         }
         

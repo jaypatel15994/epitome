@@ -68,11 +68,7 @@
                         </div>
                        
                     </div>
-                    <div class="row justify-content-center">
-            
-                        {{ $products->links() }}
-                        
-                    </div>
+                   
                 </div>
             </div>
         </div>

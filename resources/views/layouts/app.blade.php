@@ -13,10 +13,11 @@
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/plugins/OwlCarousel2-2.2.1/animate.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/responsive.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/cart_responsive.css')}}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/login.css')}}">
+
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/login.css')}}"> --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('assets/styles/sourcesanspro-font.css')}}">
+
+@yield('page_css')
 </head>
 <body>
     
