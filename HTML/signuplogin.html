@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Epitome</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Little Closet template">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
+    <link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+    <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+    <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+    <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="styles/login.css">
+    <link rel="stylesheet" type="text/css" href="styles/sourcesanspro-font.css">
+
+
+</head>
+
+<body>
+
+    <div class="super_container">
+
+        <!-- Header -->
+
+        <header class="header">
+            <div class="header_overlay"></div>
+            <div class="header_content d-flex flex-row align-items-center justify-content-start">
+                <div class="logo">
+                    <a href="index.html">
+                        <div class="d-flex flex-row align-items-center justify-content-start">
+                            <div><img src="images/logo_1.png" alt=""></div>
+                            <div>Epitome</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div class="super_container_inner">
+            <div class="super_overlay"></div>
+
+
+            <div class="form-v8">
+                <div class="page-content">
+                    <div class="form-v8-content">
+                        <div class="form-right">
+                            <div class="tab">
+                                <div class="tab-inner">
+                                    <button class="tablinks" onclick="openCity(event, 'sign-up')" id="defaultOpen">Sign
+                                        Up</button>
+                                </div>
+                                <div class="tab-inner">
+                                    <button class="tablinks" onclick="openCity(event, 'sign-in')">Sign In</button>
+                                </div>
+                            </div>
+
+
+
+                            <form class="form-detail" action="#" method="post">
+                                <div class="tabcontent" id="sign-up">
+                                    <div class="form-row">
+                                        <label class="form-row-inner">
+                                            <input type="text" name="full_name" id="full_name" class="input-text"
+                                                required>
+                                            <span class="label">Name</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-row-inner">
+                                            <input type="text" name="your_email" id="your_email" class="input-text"
+                                                required>
+                                            <span class="label">E-Mail</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-row-inner">
+                                            <input type="password" name="password" id="password" class="input-text"
+                                                required>
+                                            <span class="label">Password</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-row-inner">
+                                            <input type="password" name="comfirm_password" id="comfirm_password"
+                                                class="input-text" required>
+                                            <span class="label">Comfirm Password</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <form action="/action_page.php" target="_self">
+                                            <label class="dropdown" for="user_type" >Sign up as:</label>
+                                            <select name="user_type" id="user_type">
+                                                <option value="User">User</option>
+                                                <option value="seller">Seller</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <br><br>
+                                    <div class="form-row-last">
+                                        <input type="submit" name="register" class="register" value="Register">
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+
+                            <form class="form-detail" action="#" method="post">
+                                <div class="tabcontent" id="sign-in">
+                                    <div class="form-row">
+                                        <label class="form-row-inner">
+                                            <input type="text" name="your_email_1" id="your_email_1" class="input-text"
+                                                required>
+                                            <span class="label">E-Mail</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-row">
+                                        <label class="form-row-inner">
+                                            <input type="password" name="password_1" id="password_1" class="input-text"
+                                                required>
+                                            <span class="label">Password</span>
+                                            <span class="border"></span>
+                                        </label>
+                                    </div>
+                                    <div class="form-row">
+                                        <form action="/action_page.php" target="_self">
+                                            <label class="dropdown" for="user_type">Login as:</label>
+                                            <select name="user_type" id="user_type">
+                                                <option value="User">User</option>
+                                                <option value="seller">Seller</option>
+                                            </select>
+                                        </form>
+                                    </div>
+                                    <br><br>
+                                    <div class="form-row-last">
+                                        <input type="submit" name="register" class="register" value="Sign In">
+                                    </div>
+                                </div>
+                            </form>
+
+
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer -->
+
+            <footer class="footer">
+                <div class="footer_content">
+                    <div class="container">
+                        <div class="row">
+
+                            <!-- About -->
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_about">
+                                    <div class="footer_logo">
+                                        <a href="#">
+                                            <div class="d-flex flex-row align-items-center justify-content-start">
+                                                <div class="footer_logo_icon"><img src="images/logo_2.png" alt="">
+                                                </div>
+                                                <div>Epitome</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="footer_about_text">
+                                        <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                                            ridiculus mus. Suspendisse potenti. Fusce venenatis vel velit vel
+                                            euismod.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer Contact -->
+                            <div class="col-lg-4 footer_col">
+                                <div class="footer_contact">
+                                    <div class="footer_title">Stay in Touch</div>
+                                    <div class="newsletter">
+                                        <form action="#" id="newsletter_form" class="newsletter_form">
+                                            <input type="email" class="newsletter_input"
+                                                placeholder="Subscribe to our Newsletter" required="required">
+                                            <button class="newsletter_button">+</button>
+                                        </form>
+                                    </div>
+                                    <div class="footer_social">
+                                        <div class="footer_title">Social</div>
+                                        <ul
+                                            class="footer_social_list d-flex flex-row align-items-start justify-content-start">
+                                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a>
+                                            </li>
+                                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+
+    </div>
+
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="styles/bootstrap-4.1.2/popper.js"></script>
+    <script src="styles/bootstrap-4.1.2/bootstrap.min.js"></script>
+    <script src="plugins/greensock/TweenMax.min.js"></script>
+    <script src="plugins/greensock/TimelineMax.min.js"></script>
+    <script src="plugins/scrollmagic/ScrollMagic.min.js"></script>
+    <script src="plugins/greensock/animation.gsap.min.js"></script>
+    <script src="plugins/greensock/ScrollToPlugin.min.js"></script>
+    <script src="plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+    <script src="plugins/easing/easing.js"></script>
+    <script src="plugins/progressbar/progressbar.min.js"></script>
+    <script src="plugins/parallax-js-master/parallax.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/login.js"></script>
+
+</body>
+
+</html>

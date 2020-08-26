@@ -119,8 +119,18 @@ class CartItemController extends Controller
      * @param  \App\CartItem  $cartItem
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CartItem $cartItem)
+    public function destroy($cartItem)
     {
         //
+        cartItem::find($cartItem)->delete();
+        
+        return redirect('/cart');
+    }
+    public function deleteAll()
+    {
+        //
+        cartItem::where('user_id',Auth::user()->id)->delete();
+        
+        return redirect('/cart');
     }
 }

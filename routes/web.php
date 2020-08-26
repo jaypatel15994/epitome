@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\CartItem;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,6 +38,8 @@ Route::get('/cartShow', function () {
   return view('cart');
 });
 
+Route::get('deleteCartItem/{cartItem}', 'CartItemController@destroy');
+Route::get('clearCart', 'CartItemController@deleteAll');
     
 
 Route::get('/addItem/{product_id}', [
