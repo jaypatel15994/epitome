@@ -43,7 +43,7 @@
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
                         <a href="/" class="site_title"><i class="fa fa-paw"></i> <span>Epitome |
-                                Admin</span></a>
+                            {{session('role')}}</span></a>
                     </div>
 
                     <div class="clearfix"></div>
@@ -60,22 +60,32 @@
                     <br />
 
                     <!-- sidebar menu -->
+
+
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                         <div class="menu_section">
+
+                            @if(Auth::user() &&(session('role')=='Seller' || session('role')=='Admin') )
                             <ul class="nav side-menu">
                                 <li><a><i class="fa fa-home"></i> Products <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="addProduct">Add Products</a></li>
-                                        <li><a href="viewProduct">View Products</a></li>
+                                        @if(session('role')=='Admin')
+                                            <li><a href="viewProduct">View Products</a></li>
+                                        @elseif(session('role')=='Seller')
+                                        <li><a href="viewSellerProduct">View Products</a></li>
+                                        @endif
                                     </ul>
                                 </li>
-
+                                @if(session('role')=='Admin')
+                                
                                 <li><a><i class="fa fa-edit"></i> User <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         {{-- <li><a href="add_user">Add User</a></li> --}}
                                         <li><a href="viewUser">View User</a></li>
                                     </ul>
                                 </li>
+                                
 
                                 <li><a><i class="fa fa-list-alt"></i> Catrgory <span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
@@ -83,6 +93,27 @@
                                         
                                     </ul>
                                 </li>
+                                @endif
+                            </ul>
+                            @elseif(session('role')=='User')
+                                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-home"></i> Profile <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="addProduct">Edit Profile</a></li>
+                                           
+                                            
+                                        </ul>
+                                    </li>
+
+                                    <li><a><i class="fa fa-home"></i> Address <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu">
+                                            <li><a href="addAddress">Add Address</a></li>
+                                           
+                                            <li><a href="viewAddress">View Addresses</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>     
+                            @endif   
                         </div>
 
                     </div>
