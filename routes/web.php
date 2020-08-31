@@ -27,16 +27,37 @@ Route::get('addCategory', function () {
 });
 
 Route::get('viewProduct', 'ProductController@index');
+// Product view by seller
+Route::get('viewSellerProduct', 'ProductController@show');
 Route::get('viewUser', 'UserController@show');
 Route::get('addCategory', 'CategoryController@index');
 Route::post('/admin/storeProduct', 'ProductController@store');
 Route::post('/admin/storeCategory', 'CategoryController@store');
+
+Route::post('/admin/addAddress', 'AddressController@store');
+Route::get('viewAddress', 'AddressController@userAddresses');
+
 
 Route::get('/', 'ProductController@index');
 Route::get('/cart','CartItemController@index');
 Route::get('/cartShow', function () {
   return view('cart');
 });
+
+Route::get('/checkout', function () {
+  return view('checkout');
+});
+
+Route::get('/manageAddress', function () {
+  return view('admin/manageAddress');
+});
+
+Route::get('/addAddress', function () {
+  return view('admin/addAddress');
+});
+
+
+
 
 Route::get('deleteCartItem/{cartItem}', 'CartItemController@destroy');
 Route::get('clearCart', 'CartItemController@deleteAll');
