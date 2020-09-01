@@ -41,15 +41,17 @@ class AddressController extends Controller
         
         $address=new Address;
 
-        if($request->has('primary')){
+        // dd($request->primary=='on');
+        if($request->primary=='on'){
             $hasprimary=Address::where('user_id',Auth::user()->id)->where('is_primary','1')->get();
-            if(! empty($hasprimary)){
+            //dd( count($hasprimary));
+            if( count($hasprimary) > 0){
                 return  redirect('addAddress')->with('message_primary_error', 'You have already one primary Address.');
             }
         }
             // dd('ccc');
         $address->user_id=Auth::user()->id;
-        $address->is_primary=$request->has('primary') ? 1 : 0;
+        $address->is_primary=$request->primary=='on' ? 1 : 0;
         $address->line1=$request->has('line1') ? $request->line1 : '';
         $address->line2=$request->has('line2') ? $request->line2 : '';
         $address->city=$request->city;

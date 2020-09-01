@@ -50,15 +50,15 @@ class LoginController extends Controller
            {
                
                 session(['role'=>'Admin']);
-                return redirect('/');
+                return redirect('/send-mail');
            }
            elseif( $role->type == 2){
                 session(['role'=>'Seller']);
-                return redirect('/');
+                return redirect('/send-mail');
            }
            else{
                 session(['role'=>'User']);
-                return redirect('/');
+                return redirect('/send-mail');
            }
        }
     }

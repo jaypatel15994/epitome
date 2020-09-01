@@ -31,7 +31,8 @@ class ProductController extends Controller
         else{
             
         $products=Product::paginate(6);
-            return view('index')->with('products',$products);
+        $sliderProducts=Product::all();
+            return view('index',compact('sliderProducts','products'));
         }
         
         

@@ -7,18 +7,16 @@ use App\CartItem;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
 */
+//********************** */
+// ADMIN
+//********************** */
 
-
-
+// Admin home
 Route::get('/admin', function () {
     return view('admin/admin');
 });
+//
 Route::get('addProduct', function () {
   return view('admin/addProduct');
 });
@@ -27,65 +25,67 @@ Route::get('addCategory', function () {
 });
 
 Route::get('viewProduct', 'ProductController@index');
-// Product view by seller
+
+//********************** */
+// SELLER
+//********************** */
 Route::get('viewSellerProduct', 'ProductController@show');
 Route::get('viewUser', 'UserController@show');
 Route::get('addCategory', 'CategoryController@index');
 Route::post('/admin/storeProduct', 'ProductController@store');
 Route::post('/admin/storeCategory', 'CategoryController@store');
+Route::post('/upload', 'ProductController@store');
 
+
+//********************** */
+// USER
+//********************** */
 Route::post('/admin/addAddress', 'AddressController@store');
 Route::get('viewAddress', 'AddressController@userAddresses');
-
-
 Route::get('/', 'ProductController@index');
 Route::get('/cart','CartItemController@index');
 Route::get('/cartShow', function () {
   return view('cart');
 });
-
-
-//Get Billing Address for Order
-Route::get('/checkout', 'AddressController@getPrimaryAddress');
-
-
+Route::get('/checkout', function () {
+  return view('checkout');
+});
 Route::get('/manageAddress', function () {
   return view('admin/manageAddress');
 });
-
 Route::get('/addAddress', function () {
   return view('admin/addAddress');
 });
-
-
-
-
 Route::get('deleteCartItem/{cartItem}', 'CartItemController@destroy');
 Route::get('clearCart', 'CartItemController@deleteAll');
-
-Route::post('/placeOrder', 'UserController@placeOrder');
-    
-
 Route::get('/addItem/{product_id}', [
     'uses' => 'CartItemController@store',
     'as'   => 'addItem'
   ]);
 
+
+//********************** */
+// LOGIN SIGNIN AUTHentication 
+//********************** */
 Auth::routes();
 
-Route::get('product/create', function () {
-    return view('home');
+
+Route::get('/send-mail',function(){
+$details =[
+  'title' => 'Mail from Epitome',
+  'body' => 'Welcome to Epitome',
+];
+  \Mail::to(Auth::user()->email)->send(new App\Mail\WelcomeMail($details));
+  return redirect('/');
 });
 
 
-
-
-
+//********************** */
+// Navigation
+//********************** */
 Route::get('/clothing', 'ProductController@clothing');
 Route::get('/electronics', 'ProductController@electronics');
 Route::get('/home&kitchen', 'ProductController@home_kitchen');
 Route::get('/beauty', 'ProductController@beauty');
 Route::get('/toys', 'ProductController@toys');
-
-Route::post('/upload', 'ProductController@store');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
