@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests;
 
 class CategoryController extends Controller
 {
@@ -53,6 +54,10 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
+        // dd($category);
+        // return redirect('editCategory')->with('category',$category);
+        
+        // return view('admin/addCategory')->with('categories',$categories);
         
     }
 
@@ -88,5 +93,15 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        Category::find($category)->delete();
+        return redirect('addCategory');
     }
+
+    public function updatecat() {
+
+        $category = Category::find($_POST['catid']);
+        $category->name= $_POST['newvalue'];
+        $category->save();
+        return response()->json(array('msg'=> "success"), 200);
+     }
 }

@@ -78,7 +78,14 @@ $details =[
   \Mail::to(Auth::user()->email)->send(new App\Mail\WelcomeMail($details));
   return redirect('/');
 });
+//Edit Category
 
+Route::get('/editCategory/{category}', [
+  'uses' => 'CategoryController@show',
+  'as'   => 'editCategory'
+]);
+
+Route::post('/updatecat','CategoryController@updatecat');
 
 //********************** */
 // Navigation
@@ -89,3 +96,11 @@ Route::get('/home&kitchen', 'ProductController@home_kitchen');
 Route::get('/beauty', 'ProductController@beauty');
 Route::get('/toys', 'ProductController@toys');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::post('/upload', 'ProductController@store');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('deletecat/{category}', function (App\Category $Category) {
+  $Category->delete();
+  return redirect("addCategory");
+});

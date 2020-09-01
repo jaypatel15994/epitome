@@ -305,7 +305,7 @@
      <script src="{{asset('assets/admin/vendors/jszip/dist/jszip.min.js')}}"></script>
      <script src="{{asset('assets/admin/vendors/pdfmake/build/pdfmake.min.js')}}"></script>
      <script src="{{asset('assets/admin/vendors/pdfmake/build/vfs_fonts.js')}}"></script>
-
+     @yield('pagescript')
 </body>
 
 </html>
