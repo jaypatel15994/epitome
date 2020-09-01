@@ -16,9 +16,13 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                    @if(session()->has('message_primary'))
+                    @if(session()->has('message_primary_error'))
                     <div class="alert alert-danger">
-                        {{ session()->get('message_primary') }}
+                        {{ session()->get('message_primary_error') }}
+                    </div>
+                    @elseif(session()->has('message_primary_success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('message_primary_success') }}
                     </div>
                 @endif
                     <br />

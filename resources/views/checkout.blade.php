@@ -35,60 +35,43 @@
 									
 										<div >
 											<!-- Name -->
-											<input type="text" id="checkout_name" class="checkout_input" placeholder="Full Name" required="required">
+										<input type="text" id="checkout_name" class="checkout_input" value="{{$primaryAddress->user->name}}" placeholder="Full Name" required="required" disabled>
 										</div>
 										
 									
+									
 									<div>
-										<!-- Company -->
-										<input type="text" id="checkout_company" placeholder="Company" class="checkout_input">
-									</div>
-									<div>
+										<input type="text" id="checkout_country" class="checkout_input" value="{{$primaryAddress->country}}" placeholder="Country" required="required" disabled>
 										<!-- Country -->
-										<select name="checkout_country" id="checkout_country" class="dropdown_item_select checkout_input" require="required">
-											<option>Country</option>
-											<option>Lithuania</option>
-											<option>Sweden</option>
-											<option>UK</option>
-											<option>Italy</option>
-										</select>
+										
 									</div>
 									<div>
 										<!-- Address -->
-										<input type="text" id="checkout_address" class="checkout_input" placeholder="Address Line 1" required="required">
-										<input type="text" id="checkout_address_2" class="checkout_input checkout_address_2" placeholder="Address Line 2" required="required">
+									<input type="text" id="checkout_address" class="checkout_input" placeholder="Address Line 1" value="{{$primaryAddress->line1}}" required="required" disabled>
+										<input type="text" id="checkout_address_2" class="checkout_input checkout_address_2" value="{{$primaryAddress->line2}}" placeholder="Address Line 2" required="required" disabled>
 									</div>
 									<div>
+										
 										<!-- Zipcode -->
-										<input type="text" id="checkout_zipcode" class="checkout_input" placeholder="Zip Code" required="required">
+										<input type="text" id="checkout_zipcode" class="checkout_input" value="{{$primaryAddress->postalcode}}" placeholder="Zip Code" required="required" disabled>
 									</div>
 									<div>
 										<!-- City / Town -->
-										<select name="checkout_city" id="checkout_city" class="dropdown_item_select checkout_input" require="required">
-											<option>City / Town</option>
-											<option>City</option>
-											<option>City</option>
-											<option>City</option>
-											<option>City</option>
-										</select>
+										<input type="phone" id="checkout_city"  value="{{$primaryAddress->city}}"class="checkout_input" placeholder="City" required="required" disabled>
+										
 									</div>
 									<div>
 										<!-- Province -->
-										<select name="checkout_province" id="checkout_province" class="dropdown_item_select checkout_input" require="required">
-											<option>Province</option>
-											<option>Province</option>
-											<option>Province</option>
-											<option>Province</option>
-											<option>Province</option>
-										</select>
+										<input type="phone" id="checkout_province"  value="{{$primaryAddress->state}}"class="checkout_input" placeholder="province" required="required" disabled>
+										
 									</div>
 									<div>
 										<!-- Phone no -->
-										<input type="phone" id="checkout_phone" class="checkout_input" placeholder="Phone No." required="required">
+										<input type="phone" id="checkout_phone"  value="{{$primaryAddress->contact_number}}"class="checkout_input" placeholder="Phone No." required="required" disabled>
 									</div>
 									<div>
 										<!-- Email -->
-										<input type="phone" id="checkout_email" class="checkout_input" placeholder="Email" required="required">
+										<input type="phone" id="checkout_email" value="{{$primaryAddress->user->email}}" class="checkout_input" placeholder="Email" required="required" disabled>
 									</div>
 									
                                 </form>
@@ -108,7 +91,7 @@
 								<ul class="cart_extra_total_list">
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Subtotal</div>
-										<div class="cart_extra_total_value ml-auto">$29.90</div>
+									<div class="cart_extra_total_value ml-auto">{{Session::get('totalPrice')}}</div>
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Shipping</div>
@@ -116,39 +99,40 @@
 									</li>
 									<li class="d-flex flex-row align-items-center justify-content-start">
 										<div class="cart_extra_total_title">Total</div>
-										<div class="cart_extra_total_value ml-auto">$29.90</div>
+										<div class="cart_extra_total_value ml-auto">{{Session::get('totalPrice')}}</div>
 									</li>
 								</ul>
-								<div class="payment_options">
+
+
+								<form action="placeOrder" method="post">
+									@csrf
+									<div class="payment_options">
 									<div class="checkout_title">Payment</div>
 									<ul>
+									<input type="hidden" name="address_id" value="{{$primaryAddress->id}}">
+										@foreach ($paymentMethod as $method)
 										<li class="shipping_option d-flex flex-row align-items-center justify-content-start">
 											<label class="radio_container">
-												<input type="radio" id="radio_1" name="payment_radio" class="payment_radio">
+											<input type="radio" id="radio_1" value="{{$method->id}}" name="payment" class="payment_radio" {{$method->id==3?'checked':''}}>
 												<span class="radio_mark"></span>
-												<span class="radio_text">Paypal</span>
+											<span class="radio_text">{{$method->method}}</span>
 											</label>
 										</li>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start">
-											<label class="radio_container">
-												<input type="radio" id="radio_2" name="payment_radio" class="payment_radio">
-												<span class="radio_mark"></span>
-												<span class="radio_text">Cash on Delivery</span>
-											</label>
-										</li>
-										<li class="shipping_option d-flex flex-row align-items-center justify-content-start">
-											<label class="radio_container">
-												<input type="radio" id="radio_3" name="payment_radio" class="payment_radio" checked>
-												<span class="radio_mark"></span>
-												<span class="radio_text">Credit Card</span>
-											</label>
-										</li>
+										@endforeach
+										
+
+
+
+										
 									</ul>
 								</div>
 								<div class="cart_text">
 									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pharetra tempor so dales. Phasellus sagittis auctor gravida. Integ er bibendum sodales arcu id te mpus. Ut consectetur lacus.</p>
 								</div>
-								<div class="checkout_button trans_200"><a href="checkout.html">place order</a></div>
+								<input type="submit" name="placeorder" value="Place Order" class="checkout_button trans_200">
+						
+							</form>
+
 							</div>
 						</div>
 					</div>

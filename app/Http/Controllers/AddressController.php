@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Address;
+use App\PaymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,18 +41,13 @@ class AddressController extends Controller
         
         $address=new Address;
 
-        $hasprimary=Address::where('user_id',Auth::user()->id)->where('is_primary','0')->get();
-        if(! empty($hasprimary)){
-            return  redirect()->back()->with('message_primary', 'You have already one primary Address.');
+        if($request->has('primary')){
+            $hasprimary=Address::where('user_id',Auth::user()->id)->where('is_primary','1')->get();
+            if(! empty($hasprimary)){
+                return  redirect('addAddress')->with('message_primary_error', 'You have already one primary Address.');
+            }
         }
-        else{
-            dd('has not');
-        }
-        
-
-
-
-        // dd($request->has('primary') ? 1 : 0);
+            // dd('ccc');
         $address->user_id=Auth::user()->id;
         $address->is_primary=$request->has('primary') ? 1 : 0;
         $address->line1=$request->has('line1') ? $request->line1 : '';
@@ -65,8 +61,21 @@ class AddressController extends Controller
 
         $address->save();
         
-        return redirect('addAddress');
+        return redirect('addAddress')->with('message_primary_success', 'Your new address has been Added.');
+        
+    
+        
     }
+
+     public function getPrimaryAddress()
+    {
+        $primaryAddress=Address::with('user')->where('user_id',Auth::user()->id)->where('is_primary','1')->first();
+        $paymentMethod=PaymentMethod::all();
+// dd($paymentMethod);
+        return view('checkout',compact(['primaryAddress','paymentMethod']));
+    }
+
+
 
     /**
      * Display the specified resource.

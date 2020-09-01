@@ -26,7 +26,15 @@
 
 		<div class="cart_section">
 			<div class="container">
+				<div class="row  ">
+					@if(session()->has('order_message'))
+                    <div class="alert alert-success col-md-12">
+                        {{ session()->get('order_message') }}
+                    </div>
+                   @endif
+				</div>
 				<div class="row">
+               
 					<div class="col">
 						<div class="cart_container">
 							
@@ -51,7 +59,9 @@
 									?>
 									@foreach ($cartItems as $cartItem)
 										
-									<?php $totalPrice+=$cartItem->quantity * $cartItem->product->price; ?>
+									<?php $totalPrice+=$cartItem->quantity * $cartItem->product->price; 
+											Session::put('totalPrice',$totalPrice);
+									?>
 									<li class="cart_item item_list d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-lg-end justify-content-start">
 										<div class="product d-flex flex-lg-row flex-column align-items-lg-center align-items-start justify-content-start mr-auto">
 											<div><div class="product_number">{{++$count}}</div></div>
@@ -95,35 +105,35 @@
 				</div>
 
 
+				@if($count>0)
+					<div class="row cart_extra_row">
 
-				<div class="row cart_extra_row">
 
 
-
-					<div class="col-lg-6 cart_extra_col">
-						<div class="cart_extra cart_extra_2">
-							<div class="cart_extra_content cart_extra_total">
-								<div class="cart_extra_title">Cart Total</div>
-								<ul class="cart_extra_total_list">
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">Subtotal</div>
-										<div class="cart_extra_total_value ml-auto">{{$totalPrice}}</div>
-									</li>
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">Shipping</div>
-										<div class="cart_extra_total_value ml-auto">Free</div>
-									</li>
-									<li class="d-flex flex-row align-items-center justify-content-start">
-										<div class="cart_extra_total_title">Total</div>
-										<div class="cart_extra_total_value ml-auto">{{$totalPrice}}</div>
-									</li>
-								</ul>
-								<div class="checkout_button trans_200"><a href="checkout">proceed to checkout</a></div>
+						<div class="col-lg-6 cart_extra_col">
+							<div class="cart_extra cart_extra_2">
+								<div class="cart_extra_content cart_extra_total">
+									<div class="cart_extra_title">Cart Total</div>
+									<ul class="cart_extra_total_list">
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<div class="cart_extra_total_title">Subtotal</div>
+											<div class="cart_extra_total_value ml-auto">{{$totalPrice}}</div>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<div class="cart_extra_total_title">Shipping</div>
+											<div class="cart_extra_total_value ml-auto">Free</div>
+										</li>
+										<li class="d-flex flex-row align-items-center justify-content-start">
+											<div class="cart_extra_total_title">Total</div>
+											<div class="cart_extra_total_value ml-auto">{{$totalPrice}}</div>
+										</li>
+									</ul>
+									<div class="checkout_button trans_200"><a href="checkout">proceed to checkout</a></div>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-
+				@endif
 
 				
 			</div>

@@ -44,9 +44,10 @@ Route::get('/cartShow', function () {
   return view('cart');
 });
 
-Route::get('/checkout', function () {
-  return view('checkout');
-});
+
+//Get Billing Address for Order
+Route::get('/checkout', 'AddressController@getPrimaryAddress');
+
 
 Route::get('/manageAddress', function () {
   return view('admin/manageAddress');
@@ -61,6 +62,8 @@ Route::get('/addAddress', function () {
 
 Route::get('deleteCartItem/{cartItem}', 'CartItemController@destroy');
 Route::get('clearCart', 'CartItemController@deleteAll');
+
+Route::post('/placeOrder', 'UserController@placeOrder');
     
 
 Route::get('/addItem/{product_id}', [
