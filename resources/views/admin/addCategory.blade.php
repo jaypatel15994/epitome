@@ -63,15 +63,18 @@
                     <tbody>
                         @foreach ($categories as $category)
                             
-                        <tr>
-                             <td>{{$category->name}}</td>   
+                        <tr class="category-item category-item-{{$category->id}}" data-catid="{{$category->id}}">
+                             <td>
+                                <input type="text" disabled value="{{$category->name}}">
+                                 
+                            </td>   
                             </td>
                             <td>
                                 <div class="w3-padding">
                                     
-                                    <a href="#"> <i
-                                            class="glyphicon glyphicon-pencil"></i> </a>
-                                    <a href="#"> <i
+                                    <button class="edit-cat-{{$category->id}} glyphicon glyphicon-pencil" onClick="edit_cat({{$category->id}})"></button>
+                                    <button hidden class="save-cat-{{$category->id}} glyphicon glyphicon-save" onClick="save_cat({{$category->id}})"></button>
+                                    <a href="deletecat/{{$category->id}}"> <i
                                             class="glyphicon glyphicon-trash"></i> </a>
                                 </div>
                             </td>
@@ -92,5 +95,37 @@
 </div>
 
 
+@endsection
 
+@section('pagescript')
+    
+
+<script>
+function edit_cat(catid){
+    $(".edit-cat-"+catid).hide();
+    $(".save-cat-"+catid).prop("hidden",false);
+    $(".category-item-"+catid+" input").attr("disabled", false);
+}
+
+function save_cat(catid){
+    $(".edit-cat-"+catid).show();
+    $(".save-cat-"+catid).prop("hidden",true);
+    
+
+    $.ajax({
+        type:'POST',
+        url:'/updatecat',
+        data:{
+            '_token' : '<?php echo csrf_token() ?>',
+            'catid' : catid,
+            'newvalue' : $(".category-item-"+catid+" input").val()
+        },
+        success:function(data) {
+            // $("#msg").html(data.msg);
+            $(".category-item-"+catid+" input").attr("disabled", true);
+            // alert("done");
+        }
+    });
+}
+</script>
 @endsection

@@ -24,7 +24,7 @@
                                             <th>Mobile</th>
                                             <th>Role</th>
                                             <th>Status</th>
-                                            <th>Edit or Delete</th>
+                                            <th>Delete</th>
                                         </tr>
                                     </thead>
 
@@ -60,8 +60,7 @@
                                             <td>
                                                 <div class="w3-padding">
                                                    
-                                                    <a href="#"> <i
-                                                            class="glyphicon glyphicon-pencil"></i> </a>
+                                                   
                                                     <a href="#"> <i
                                                             class="glyphicon glyphicon-trash"></i> </a>
                                                 </div>
