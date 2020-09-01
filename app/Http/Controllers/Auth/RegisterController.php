@@ -89,7 +89,7 @@ class RegisterController extends Controller
         $userRole->role_id = ($request->role == 'User')?1:2;
 
         $userRole->save();
-
+        session(['email' => $user->email]);
         return redirect($this->redirectPath())->with('message_register_success', 'You have registered successfully. Please verify your mail to login.');
     }
 }

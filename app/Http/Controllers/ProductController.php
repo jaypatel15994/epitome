@@ -44,7 +44,8 @@ class ProductController extends Controller
             $q->Where('name', 'Clothing');
 
         })->paginate(6);
-        return view('index')->with('products',$products);
+        $sliderProducts=Product::all();
+        return view('index',compact('sliderProducts','products'));
         
     }
     public function electronics(Request $request)
@@ -54,7 +55,8 @@ class ProductController extends Controller
             $q->Where('name', 'Electronics');
 
         })->paginate(6);
-        return view('index')->with('products',$products);
+        $sliderProducts=Product::all();
+        return view('index',compact('sliderProducts','products'));
         
     }
     public function home_kitchen(Request $request)
@@ -64,7 +66,8 @@ class ProductController extends Controller
             $q->Where('name', 'Home&Kitchen');
 
         })->paginate(6);
-        return view('index')->with('products',$products);
+        $sliderProducts=Product::all();
+        return view('index',compact('sliderProducts','products'));
     }
     public function beauty(Request $request)
     {
@@ -73,7 +76,8 @@ class ProductController extends Controller
             $q->Where('name', 'Beauty');
 
         })->paginate(6);
-        return view('index')->with('products',$products);
+        $sliderProducts=Product::all();
+        return view('index',compact('sliderProducts','products'));
     }
     public function toys(Request $request)
     {
@@ -82,7 +86,8 @@ class ProductController extends Controller
             $q->Where('name', 'Toys');
 
         })->paginate(6);
-        return view('index')->with('products',$products);
+        $sliderProducts=Product::all();
+        return view('index',compact('sliderProducts','products'));
     }
 
 
@@ -179,5 +184,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
+    }
+
+    public function showproduct($id){
+        $product = Product::find($id);
+        return view('showproduct')->with('product',$product);
     }
 }

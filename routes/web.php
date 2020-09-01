@@ -47,9 +47,7 @@ Route::get('/cart','CartItemController@index');
 Route::get('/cartShow', function () {
   return view('cart');
 });
-Route::get('/checkout', function () {
-  return view('checkout');
-});
+Route::get('/checkout','AddressController@getPrimaryAddress');
 Route::get('/manageAddress', function () {
   return view('admin/manageAddress');
 });
@@ -63,6 +61,12 @@ Route::get('/addItem/{product_id}', [
     'as'   => 'addItem'
   ]);
 
+Route::get('/single-product/{product_id}', [
+  'uses' => 'ProductController@showproduct',
+  'as'   => 'single-product'
+]);
+  
+
 
 //********************** */
 // LOGIN SIGNIN AUTHentication 
@@ -75,8 +79,8 @@ $details =[
   'title' => 'Mail from Epitome',
   'body' => 'Welcome to Epitome',
 ];
-  \Mail::to(Auth::user()->email)->send(new App\Mail\WelcomeMail($details));
-  return redirect('/');
+  \Mail::to(session('email'))->send(new App\Mail\WelcomeMail($details));
+  return redirect('/login');
 });
 //Edit Category
 
@@ -98,6 +102,7 @@ Route::get('/toys', 'ProductController@toys');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::post('/upload', 'ProductController@store');
+Route::post('/placeOrder', 'UserController@placeOrder');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 Route::get('deletecat/{category}', function (App\Category $Category) {

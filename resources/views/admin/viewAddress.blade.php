@@ -36,7 +36,7 @@
                                         @foreach ($addresses as $address)
                                             
                                         <tr>
-                                            <td>{{$address->is_primary==0?'primary':''}}</td>
+                                            <td>{{$address->is_primary==1?'primary':''}}</td>
                                             <td>{{$address->line1}}</td>
                                             <td>{{$address->line2}}</td>
                                             <td>{{$address->city}}</td>

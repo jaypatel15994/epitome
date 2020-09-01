@@ -50,21 +50,21 @@ class LoginController extends Controller
            {
                
                 session(['role'=>'Admin']);
-                return redirect('/send-mail');
+                return redirect('/');
            }
            elseif( $role->type == 2){
                 session(['role'=>'Seller']);
-                return redirect('/send-mail');
+                return redirect('/');
            }
            else{
                 session(['role'=>'User']);
-                return redirect('/send-mail');
+                return redirect('/');
            }
        }
     }
 
     public function logout(Request $request) {
         Auth::logout();
-        return redirect('/login');
+        return redirect('/');
     }
 }

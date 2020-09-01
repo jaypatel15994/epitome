@@ -78,7 +78,7 @@
 
 
                                 
-                                <div class="checkout_button trans_200"><a href="checkout.html">Manage Address</a></div>
+                                {{-- <div class="checkout_button trans_200"><a href="/admin/addAddress">Manage Address</a></div> --}}
 							</div>
 						</div>
 					</div>
