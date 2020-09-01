@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('address_id')->unsigned();
             $table->foreign('address_id')->references('id')->on('addresses');
             $table->integer('status')->comment('0=Placed,1=Dispatched,2=delivered');
-            $table->integer('transaction_id')->unsigned();
+            $table->integer('transaction_id')->nullable()->unsigned();
             $table->foreign('transaction_id')->references('id')->on('transactions');
             $table->timestamps();
         });
