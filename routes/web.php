@@ -79,7 +79,14 @@ Route::get('product/create', function () {
 
 
 
+//Edit Category
 
+Route::get('/editCategory/{category}', [
+  'uses' => 'CategoryController@show',
+  'as'   => 'editCategory'
+]);
+
+Route::post('/updatecat','CategoryController@updatecat');
 
 Route::get('/clothing', 'ProductController@clothing');
 Route::get('/electronics', 'ProductController@electronics');
@@ -89,3 +96,8 @@ Route::get('/toys', 'ProductController@toys');
 
 Route::post('/upload', 'ProductController@store');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+Route::get('deletecat/{category}', function (App\Category $Category) {
+  $Category->delete();
+  return redirect("addCategory");
+});
